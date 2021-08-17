@@ -1,9 +1,9 @@
-import './App.css';
 import Background from "./Background";
-import sun from "./Images/icon-sun.svg";
-import moon from "./Images/icon-moon.svg";
-import check from "./Images/icon-check.svg";
-import cross from "./Images/icon-cross.svg";
+import Header from "./Header";
+import Create from "./Create";
+import ListItem from "./ListItem";
+import FooterNav from "./FooterNav";
+import NavCategoryMini from "./NavCategoryMini";
 import React,{useState} from "react";
 
 function App() {
@@ -141,66 +141,21 @@ function App() {
       <Background theme={theme} />
       <div className={"body "+theme}></div>
       <div className={"todo "+theme}>
-        <div className={"header "+theme}>
-          <div className={"header-cell logo "+theme}>
-            T O D O
-          </div>
-          <div className={"header-cell theme-selector "+theme}>
-            <button className={"theme-button moon-"+theme}><img src={moon} alt="toggle dark" onClick={toggleTheme} /></button>
-            <button className={"theme-button sun-"+theme}><img src={sun} alt="toggle light" onClick={toggleTheme} /></button>
-          </div>
-        </div>
-        <div className={"Create "+theme}>
-          <input type="button" className={"create check "+theme} onClick={handleCreate} value=" "/>
-          <input className={"create-input "+theme} type="text" placeHolder={placeholder} value={create} onFocus={() => setCreate([create,"Currently typing ",list,active])} onChange={handleChange} onKeyDown={handleKey} />
-        </div>
+        <Header theme={theme} toggleTheme={toggleTheme} />
+        <Create theme={theme} handleCreate={handleCreate} placeholder={placeholder} create={create} setCreate={setCreate} list={list} active={active} handleChange={handleChange} handleKey={handleKey} />
         <div className={"List "+theme}>
           {list.map(function(element,i) {
               if(def==="all")
-                return <div id={i} className={"List-item "+theme}>
-                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img name={i} className={element.check} src={check} alt="check" onclick={handleCheck} /></button>
-                  <div className={"note "+theme+" "+element.check}>
-                    {element.message}
-                  </div>
-                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img name={i} className="delete" src={cross} alt="delete" /></button>
-                </div>
+                return <ListItem i={i} theme={theme} check={element.check} handleCheck={handleCheck} message={element.message} handleDelete={handleDelete} />;
               else if(def==="active" && element.check==="unchecked")
-                return <div id={i} className={"List-item "+theme}>
-                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img name={i} className={element.check} src={check} alt="check" onclick={handleCheck} /></button>
-                  <div className={"note "+theme+" "+element.check}>
-                    {element.message}
-                  </div>
-                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img name={i} className="delete" src={cross} alt="delete" /></button>
-                </div>
+                return <ListItem i={i} theme={theme} check={element.check} handleCheck={handleCheck} message={element.message} handleDelete={handleDelete} />;
               else if(def==="completed" && element.check==="checked")
-                return <div id={i} className={"List-item "+theme}>
-                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img name={i} className={element.check} src={check} alt="check" onclick={handleCheck} /></button>
-                  <div className={"note "+theme+" "+element.check}>
-                    {element.message}
-                  </div>
-                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img name={i} className="delete" src={cross} alt="delete" /></button>
-                </div>
+                return <ListItem i={i} theme={theme} check={element.check} handleCheck={handleCheck} message={element.message} handleDelete={handleDelete} />;
               return "";
           })}
-          <div className={"Footer-nav "+theme}>
-            <div className={"nav items-left "+theme}> 
-                {active+" items left"}
-            </div>
-            <div className={"nav category-menu "+theme}>
-              <button className={"nav-button category all-"+def+" "+theme} name="all" onClick={changeDefault} >All</button>
-              <button className={"nav-button category active-"+def+" "+theme} name="active" onClick={changeDefault}>Active</button>
-              <button className={"nav-button category completed-"+def+" "+theme} name="completed" onClick={changeDefault}>Completed</button>
-            </div>
-            <div className={"nav clear-completed "+theme}>
-              <button className={"nav-button "+theme} onClick={clearCompleted}>Clear Completed</button>
-            </div>
-          </div>
+          <FooterNav theme={theme} active={active} def={def} changeDefault={changeDefault} clearCompleted={clearCompleted} />
         </div>
-        <div className={"nav category-menu-mini "+theme}>
-          <button className={"nav-button category all-"+def+" "+theme} name="all" onClick={changeDefault}>All</button>
-          <button className={"nav-button category active-"+def+" "+theme} name="active" onClick={changeDefault}>Active</button>
-          <button className={"nav-button category completed-"+def+" "+theme} name="completed" onClick={changeDefault}>Completed</button>
-        </div>
+        <NavCategoryMini theme={theme} def={def} changeDefault={changeDefault} />
       </div>
     </div>
   );
