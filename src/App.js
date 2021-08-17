@@ -8,7 +8,24 @@ import React,{useState} from "react";
 
 function App() {
   const [theme,setTheme]=useState("light");
-  const [[create,placeholder,list,active], setCreate]=useState(["","Create a new todo...",[],0]);
+  const [[create,placeholder,list,active], setCreate]=useState(["","Create a new todo...",[
+  {
+      message: "Welcome to TODO App",
+      check: "unchecked"
+  },
+  {
+      message: "Click on Sun/Moon above to toggle theme ^",
+      check: "unchecked"
+  },
+  {
+      message: "<- Click on this button to mark as completed",
+      check: "unchecked"
+  },
+  {
+      message: "Click on this button to delete this note ->",
+      check: "unchecked"
+  }
+  ],4]);
   const [def,setDefault]=useState("all");
   
   function toggleTheme() {

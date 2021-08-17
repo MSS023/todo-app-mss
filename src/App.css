@@ -171,6 +171,7 @@ img.checked {
     background: transparent;
     border: none;
     outline: none;
+    word-wrap: break-word;
 }
 
 .note.checked{
