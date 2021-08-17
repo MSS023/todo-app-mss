@@ -7,7 +7,7 @@ import cross from "./Images/icon-cross.svg";
 import React,{useState} from "react";
 
 function App() {
-  const [theme,setTheme]=useState("light");
+  const [theme,setTheme]=useState("dark");
   const [[create,placeholder,list,active], setCreate]=useState(["","Create a new todo...",[
   {
       message: "Welcome to TODO App",
