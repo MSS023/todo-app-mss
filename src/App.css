@@ -148,6 +148,10 @@ img.checked {
     background: transparent;
 }
 
+.List-item.dark {
+    border-bottom: 1px dashed hsl(236, 9%, 61%);
+}
+
 .delete {
     display: none;
 }
