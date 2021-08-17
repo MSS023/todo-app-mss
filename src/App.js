@@ -138,7 +138,7 @@ function App() {
                 </div>
               else if(def==="active" && element.check==="unchecked")
                 return <div id={i} className={"List-item "+theme}>
-                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img name={i} className={element.check} src={check} alt="check" onclick={handleCheck} /></button>
+                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img  className={element.check} src={check} alt="check" /></button>
                   <div className={"note "+theme+" "+element.check}>
                     {element.message}
                   </div>
@@ -146,7 +146,7 @@ function App() {
                 </div>
               else if(def==="completed" && element.check==="checked")
                 return <div id={i} className={"List-item "+theme}>
-                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img name={i} className={element.check} src={check} alt="check" onclick={handleCheck} /></button>
+                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img className={element.check} src={check} alt="check" /></button>
                   <div className={"note "+theme+" "+element.check}>
                     {element.message}
                   </div>
