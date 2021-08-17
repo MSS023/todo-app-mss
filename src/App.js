@@ -130,11 +130,11 @@ function App() {
           {list.map(function(element,i) {
               if(def==="all")
                 return <div id={i} className={"List-item "+theme}>
-                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img name={i} className={element.check} src={check} alt="check" onclick={handleCheck} /></button>
+                  <button name={i} type="button" className={"check "+element.check+" "+theme} onClick={handleCheck}><img className={element.check} src={check} alt="check" /></button>
                   <div className={"note "+theme+" "+element.check}>
                     {element.message}
                   </div>
-                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img name={i} className="delete" src={cross} alt="delete" /></button>
+                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img className="delete" src={cross} alt="delete" /></button>
                 </div>
               else if(def==="active" && element.check==="unchecked")
                 return <div id={i} className={"List-item "+theme}>
@@ -142,7 +142,7 @@ function App() {
                   <div className={"note "+theme+" "+element.check}>
                     {element.message}
                   </div>
-                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img name={i} className="delete" src={cross} alt="delete" /></button>
+                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img className="delete" src={cross} alt="delete" /></button>
                 </div>
               else if(def==="completed" && element.check==="checked")
                 return <div id={i} className={"List-item "+theme}>
@@ -150,7 +150,7 @@ function App() {
                   <div className={"note "+theme+" "+element.check}>
                     {element.message}
                   </div>
-                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img name={i} className="delete" src={cross} alt="delete" /></button>
+                  <button name={i} className={"cross "+theme} onClick={handleDelete}><img className="delete" src={cross} alt="delete" /></button>
                 </div>
               return "";
           })}
