@@ -28,6 +28,18 @@ function App() {
   ],4]);
   const [def,setDefault]=useState("all");
   
+  function handleCreate() {
+    if(create==="")
+    {
+        return;
+    }
+    list.unshift({
+      message: create,
+      check: "unchecked"
+    });
+    setCreate(["","Create a new todo...",list,active+1]);
+  }
+  
   function toggleTheme() {
     if(theme==="light")
       setTheme("dark")
@@ -111,7 +123,7 @@ function App() {
           </div>
         </div>
         <div className={"Create "+theme}>
-          <input type="button" className={"create check "+theme} value=" "/>
+          <input type="button" className={"create check "+theme} onClick={handleCreate} value=" "/>
           <input className={"create-input "+theme} type="text" placeHolder={placeholder} value={create} onFocus={() => setCreate([create,"Currently typing ",list,active])} onChange={handleChange} onKeyDown={handleKey} />
         </div>
         <div className={"List "+theme}>
