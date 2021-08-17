@@ -27,6 +27,21 @@ function App() {
   }
   ],4]);
   const [def,setDefault]=useState("all");
+  if(localStorage.getItem("visited")===null)
+  {
+      localStorage.setItem("visited","yes");
+      localStorage.setItem("list",JSON.stringify(list));
+      localStorage.setItem("active",JSON.stringify(active));
+      localStorage.setItem("theme",theme);
+  }
+  else if(JSON.stringify(list)!==localStorage.getItem("list"))
+  {
+      setCreate([create,placeholder,JSON.parse(localStorage.getItem("list")),JSON.parse(localStorage.getItem("active"))]);
+  }
+  if(theme!==localStorage.getItem("theme"))
+  {
+      setTheme(localStorage.getItem("theme"));
+  }
   
   function handleCreate() {
     if(create==="")
@@ -37,14 +52,19 @@ function App() {
       message: create,
       check: "unchecked"
     });
+    localStorage.setItem("list",JSON.stringify(list));
+    localStorage.setItem("active",JSON.stringify(active+1));
     setCreate(["","Create a new todo...",list,active+1]);
   }
   
   function toggleTheme() {
+    var t;
     if(theme==="light")
-      setTheme("dark")
+      t="dark";
     else
-      setTheme("light")
+      t="light";
+    localStorage.setItem("theme",t);
+    setTheme(t);
   }
   
   function handleChange(e) {
@@ -60,6 +80,8 @@ function App() {
           message: create,
           check: "unchecked"
         });
+        localStorage.setItem("list",JSON.stringify(list));
+        localStorage.setItem("active",JSON.stringify(active+1));
         setCreate(["","Create a new todo...",list,active+1]);
     }
     else
@@ -79,6 +101,8 @@ function App() {
         act=active-1;
         list[id].check="checked";
       }
+      localStorage.setItem("list",JSON.stringify(list));
+      localStorage.setItem("active",JSON.stringify(act));
       setCreate([create,placeholder,list,act]);
   }
   
@@ -88,6 +112,8 @@ function App() {
       var act=active;
       if(el[0].check==="unchecked")
           act-=1;
+      localStorage.setItem("list",JSON.stringify(list));
+      localStorage.setItem("active",JSON.stringify(act));
       setCreate([create,placeholder,list,act]);
   }
   
@@ -100,6 +126,8 @@ function App() {
         else
           i++;
     }
+    localStorage.setItem("list",JSON.stringify(temp));
+    localStorage.setItem("active",JSON.stringify(active));
     setCreate([create,placeholder,temp,active]);
   }
   
