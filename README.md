@@ -55,4 +55,4 @@ My next step in this project would be to divide the app.js into components makin
 
 ## Acknowledgments
 
-I want to thank all my friends and mentors who've actively helped me in learning new things. Moreover I want to acknowledge the help provided by websites like https://www.stackoverflow.com and https://www.geeksforgeeks.org . It won't be possible for me to complete any project were it not for these websites.
+I want to thank all my friends and mentors who've actively helped me in learning new things. Moreover I want to acknowledge the help provided by websites like https://www.stackoverflow.com and https://www.geeksforgeeks.org . It won't be possible for me to complete any project were it not for these websites.# todo-app-mss
